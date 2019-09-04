@@ -1,0 +1,19 @@
+server:
+  port: 8004
+
+spring:
+  rabbitmq:
+    username: yangchun
+    password: yangchun
+    virtual-host: /
+    publisher-confirms: true  #  消息发送到交换机确认机制,是否确认回调
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 1
+        max-concurrency: 5
+        prefetch: 1
+    addresses: 172.16.10.51:5672,172.16.10.52:5672,172.16.10.53:5672
